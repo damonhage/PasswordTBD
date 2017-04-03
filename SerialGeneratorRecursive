@@ -28,3 +28,35 @@ static void printAllKLengthRec(char set[], String prefix, int n, int k) {
             printAllKLengthRec(set, newPrefix, n, k - 1); 
         }
     }
+
+public class PossibleStringsFromKChar {
+
+    public void find(char[] chars, int k) {
+
+        char[] data = new char[k];
+        _find(chars, data, 0);
+    }
+
+    private void _find(char[] chars, char[] data, int di) {
+
+        if (di == data.length) {
+            System.out.println(String.valueOf(data));
+            return;
+        }
+
+
+        for (int i = 0; i < chars.length; i++) {
+            data[di] = chars[i];
+            _find(chars, data, di + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        char[] arr = "ab".toCharArray();
+        PossibleStringsFromKChar psfk = new PossibleStringsFromKChar();
+        int k = 3;
+
+        psfk.find(arr, k);
+    }
+}
